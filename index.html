@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>พอร์ตโฟลิโอ</title>
+<meta name="description" content="พอร์ตโฟลิโอนักศึกษามหาวิทยาลัยกรุงเทพ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0a1f44; --navy-2:#13306b; --orange:#f26a1b; --orange-2:#ff9a4d;
+  --ink:#14213d; --muted:#5b6785; --bg:#f6f7fb; --glass:rgba(255,255,255,.58);
+  --glass-line:rgba(255,255,255,.75); --radius:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{font-family:'Sarabun',sans-serif;color:var(--ink);background:var(--bg);line-height:1.75;font-size:17px;overflow-x:hidden}
+h1,h2,h3,.kanit{font-family:'Kanit',sans-serif}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:8px}
+.wrap{width:min(1080px,92%);margin:0 auto}
+
+/* พื้นหลังรูปตึกทั้งหน้า (เบลอเบาๆ) */
+.bg{position:fixed;inset:0;z-index:-2;background:linear-gradient(135deg,var(--navy),var(--navy-2) 55%,#2b4a8f) center/cover no-repeat}
+.bg.has-img{filter:blur(3px) saturate(1.05);transform:scale(1.04)}
+.bg-tint{position:fixed;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(10,31,68,.62) 0%,rgba(10,31,68,.35) 45%,rgba(246,247,251,.88) 100%)}
+
+/* เมนู */
+nav{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:20;width:min(760px,92%);
+  display:flex;justify-content:space-between;align-items:center;padding:8px 10px 8px 20px;border-radius:999px;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#fff}
+nav .brand{font-family:'Kanit';font-weight:600;font-size:18px}
+nav ul{display:flex;gap:4px;list-style:none}
+nav a.l{padding:6px 14px;border-radius:999px;font-size:15px;transition:.2s}
+nav a.l:hover{background:var(--orange)}
+@media(max-width:560px){nav ul li:nth-child(n+3){display:none}nav .brand{font-size:16px}}
+
+/* ส่วนแรก */
+.hero{min-height:100vh;display:flex;align-items:center;color:#fff;padding:120px 0 80px}
+.hero h1{font-weight:700;font-size:clamp(34px,6.4vw,68px);line-height:1.2;max-width:15ch}
+.hero .en{display:block;font-weight:300;font-size:clamp(20px,3vw,32px);color:var(--orange-2);margin-top:10px;letter-spacing:.5px}
+.hero p{max-width:34em;margin-top:24px;font-size:clamp(17px,2.2vw,21px);color:rgba(255,255,255,.9)}
+.btns{display:flex;gap:14px;flex-wrap:wrap;margin-top:36px}
+.btn{font-family:'Kanit';font-weight:500;padding:13px 28px;border-radius:999px;border:2px solid rgba(255,255,255,.7);color:#fff;transition:.25s;background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
+.btn:hover{background:#fff;color:var(--navy)}
+.btn.primary{background:var(--orange);border-color:var(--orange);box-shadow:0 10px 30px rgba(242,106,27,.45)}
+.btn.primary:hover{background:var(--orange-2);border-color:var(--orange-2);color:var(--navy)}
+
+section{padding:90px 0}
+.sec-title{font-size:clamp(28px,4vw,40px);font-weight:600;color:var(--navy);margin-bottom:8px}
+.sec-title::after{content:"";display:block;width:64px;height:5px;border-radius:5px;background:var(--orange);margin-top:10px}
+.sec-sub{color:var(--muted);margin:14px 0 36px}
+
+.glass{background:var(--glass);border:1px solid var(--glass-line);border-radius:var(--radius);
+  backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);
+  box-shadow:0 16px 40px rgba(10,31,68,.12)}
+
+/* เกี่ยวกับฉัน */
+.about{display:grid;grid-template-columns:260px 1fr;gap:36px;align-items:center;padding:34px}
+.photo{width:100%;aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:linear-gradient(160deg,var(--navy),var(--orange));display:grid;place-items:center;color:#fff;font:600 72px 'Kanit'}
+.photo img{width:100%;height:100%;object-fit:cover}
+.about h3{font-size:26px;color:var(--navy)}
+.about .major{color:var(--orange);font-weight:600;margin-bottom:12px}
+.about p+p{margin-top:10px}
+@media(max-width:700px){.about{grid-template-columns:1fr;padding:22px}.photo{max-width:230px;margin:0 auto}}
+
+/* ทักษะ */
+.main-skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px}
+.skill{padding:28px;transition:.3s}
+.skill:hover{transform:translateY(-5px);border-color:var(--orange)}
+.skill .ic{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:26px;background:linear-gradient(135deg,var(--navy),var(--navy-2));margin-bottom:14px}
+.skill h3{font-size:21px;color:var(--navy)}
+.skill p{color:var(--muted);margin-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.tag{font-family:'Kanit';font-weight:400;padding:9px 20px;border-radius:999px;background:rgba(255,255,255,.65);border:1px solid rgba(242,106,27,.55);color:var(--navy);backdrop-filter:blur(10px);transition:.2s}
+.tag:hover{background:var(--orange);color:#fff}
+
+/* ผลงาน */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:22px}
+.proj{padding:28px;display:flex;flex-direction:column;transition:.3s;position:relative;overflow:hidden}
+.proj::before{content:"";position:absolute;left:0;top:0;height:5px;width:100%;background:linear-gradient(90deg,var(--navy),var(--orange))}
+.proj:hover{transform:translateY(-6px)}
+.proj h3{font-size:21px;line-height:1.4;color:var(--navy);margin:8px 0 10px}
+.proj p{color:var(--muted);flex:1}
+.pt{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.pt span{font:500 13.5px 'Kanit';padding:4px 14px;border-radius:999px;background:var(--navy);color:#fff}
+.pt span:nth-child(even){background:var(--orange)}
+.proj .more{margin-top:16px;font:500 15px 'Kanit';color:var(--orange)}
+
+/* ติดต่อ */
+.contact{text-align:center;padding:48px 28px;background:linear-gradient(135deg,rgba(10,31,68,.88),rgba(19,48,107,.8));color:#fff;border-color:rgba(255,255,255,.25)}
+.contact h2{font-size:clamp(26px,4vw,38px)}
+.contact p{margin:10px auto 26px;max-width:32em;color:rgba(255,255,255,.85)}
+.clinks{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.clinks a{padding:12px 24px;border-radius:16px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);transition:.25s;font-size:15px}
+.clinks a b{display:block;font:500 14px 'Kanit';color:var(--orange-2)}
+.clinks a:hover{background:var(--orange);border-color:var(--orange)}
+.clinks a:hover b{color:#fff}
+footer{text-align:center;padding:28px 0 40px;color:var(--muted);font-size:14.5px}
+.err{margin:140px auto;max-width:520px;padding:24px;background:#fff;border-radius:16px;text-align:center}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<div class="bg" id="bg"></div><div class="bg-tint"></div>
+<div id="app"></div>
+
+<script>
+const $ = (s) => document.querySelector(s);
+const esc = (t = '') => String(t).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+fetch('data.json')
+  .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+  .then(render)
+  .catch(() => {
+    $('#app').innerHTML = `<div class="err"><h3 class="kanit">โหลดข้อมูลไม่สำเร็จ</h3>
+      <p>ไม่พบไฟล์ data.json หรือเปิดไฟล์โดยตรงจากเครื่อง กรุณาเปิดผ่านเซิร์ฟเวอร์ เช่น GitHub Pages หรือรันคำสั่ง <code>python -m http.server</code> แล้วเข้า localhost:8000</p></div>`;
+  });
+
+function render(d) {
+  document.title = d.site.title;
+  document.querySelector('meta[name=description]').content = d.site.description;
+
+  // รูปพื้นหลังตึก BU
+  if (d.profile.heroImage) {
+    const img = new Image();
+    img.onload = () => { const bg = $('#bg'); bg.style.backgroundImage = `url('${d.profile.heroImage}')`; bg.classList.add('has-img'); };
+    img.src = d.profile.heroImage;
+  }
+
+  const p = d.profile, h = d.hero, s = d.skills;
+  const initial = esc((p.nickname || p.name || '?').trim().charAt(0));
+
+  $('#app').innerHTML = `
+  <nav>
+    <span class="brand">${esc(p.nickname || p.name)}</span>
+    <ul>
+      <li><a class="l" href="#about">เกี่ยวกับฉัน</a></li>
+      <li><a class="l" href="#skills">ทักษะ</a></li>
+      <li><a class="l" href="#projects">ผลงาน</a></li>
+      <li><a class="l" href="#contact">ติดต่อ</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero"><div class="wrap">
+    <h1>${esc(h.title)}<span class="en">${esc(h.titleEn)}</span></h1>
+    <p>${esc(h.subtitle)}</p>
+    <div class="btns">${h.buttons.map(b => `<a class="btn ${b.primary ? 'primary' : ''}" href="${esc(b.href)}">${esc(b.label)}</a>`).join('')}</div>
+  </div></header>
+
+  <main>
+  <section id="about"><div class="wrap">
+    <h2 class="sec-title">เกี่ยวกับฉัน</h2>
+    <div class="glass about" style="margin-top:30px">
+      <div class="photo" id="photo">${initial}</div>
+      <div>
+        <h3>${esc(p.name)}</h3>
+        <div class="major">${esc(p.major)}</div>
+        ${p.about.map(t => `<p>${esc(t)}</p>`).join('')}
+      </div>
+    </div>
+  </div></section>
+
+  <section id="skills"><div class="wrap">
+    <h2 class="sec-title">ทักษะของฉัน</h2>
+    <p class="sec-sub">เครื่องมือและความเชี่ยวชาญที่ใช้ในการทำงานจริง</p>
+    <div class="main-skills">${s.main.map(k => `
+      <div class="glass skill"><div class="ic">${k.icon}</div><h3>${esc(k.name)}</h3><p>${esc(k.desc)}</p></div>`).join('')}</div>
+    <div class="tags">${s.extra.map(t => `<span class="tag">${esc(t)}</span>`).join('')}</div>
+  </div></section>
+
+  <section id="projects"><div class="wrap">
+    <h2 class="sec-title">ผลงานของฉัน</h2>
+    <p class="sec-sub">โปรเจกต์ที่ผสานการจัดการข้อมูลเข้ากับการออกแบบ</p>
+    <div class="projects">${d.projects.map(j => `
+      <article class="glass proj">
+        <h3>${esc(j.title)}</h3>
+        <p>${esc(j.desc)}</p>
+        <div class="pt">${j.tags.map(t => `<span>${esc(t)}</span>`).join('')}</div>
+        ${j.link ? `<a class="more" href="${esc(j.link)}" target="_blank" rel="noopener">ดูรายละเอียดผลงาน</a>` : ''}
+      </article>`).join('')}</div>
+  </div></section>
+
+  <section id="contact"><div class="wrap">
+    <div class="glass contact">
+      <h2 class="kanit">${esc(d.contact.heading)}</h2>
+      <p>${esc(d.contact.text)}</p>
+      <div class="clinks">${d.contact.links.map(l => `<a href="${esc(l.href)}" target="_blank" rel="noopener"><b>${esc(l.label)}</b>${esc(l.value)}</a>`).join('')}</div>
+    </div>
+  </div></section>
+  </main>
+  <footer>${esc(d.footer)}</footer>`;
+
+  // รูปโปรไฟล์ (ถ้าไม่มีไฟล์ จะแสดงตัวอักษรแรกของชื่อแทน)
+  if (p.photo) {
+    const im = new Image();
+    im.alt = 'รูปของ ' + p.name;
+    im.onload = () => { const ph = $('#photo'); ph.textContent = ''; ph.appendChild(im); };
+    im.src = p.photo;
+  }
+}
+</script>
+</body>
+</html>
